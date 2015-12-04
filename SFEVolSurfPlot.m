@@ -85,7 +85,9 @@ while (j<gmat+1);
         Y=x(:,8);
 
         % optimal bandwidth rule of thumb for quartic kernel
-        h1=2.78*std(x(:,7))*v^(-1/6);
+        a=unique(x(:,7));
+        b=length(a);
+        h1=2.78*std(a)*b^(-1/6);
 
         c=unique(x(:,4));
         d=length(c);
