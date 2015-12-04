@@ -85,18 +85,11 @@ while (j<gmat+1);
         Y=x(:,8);
 
         % optimal bandwidth rule of thumb for quartic kernel
-        h1=2.78*std(x(:,7))*v^(-1/5);
+        h1=2.78*std(x(:,7))*v^(-1/6);
 
-        c=NaN(v,1);
-        c(1)=x(1,4);
-        d=1;
-        for l=2:v
-            if x(l,4)~=x(l-1,4)
-                c(l)=x(l,4);
-                d=d+1;
-            end
-        end
-        h2=2.78*std(c,'omitnan')*d^(-1/5);
+        c=unique(x(:,4));
+        d=length(c);
+        h2=2.78*std(c)*d^(-1/6);
 
         % kernel matrix - quartic kernel
         W=zeros(v,v);
